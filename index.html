@@ -769,9 +769,14 @@
       /* Evitar overflow horizontal */
       html, body { overflow-x: hidden !important; max-width: 100% !important; }
       * { max-width: 100%; box-sizing: border-box !important; }
+      /* Hero completo */
+      #inicio { padding: 90px 4% 3rem !important; overflow: hidden !important; }
+      .hero-inner { grid-template-columns: 1fr !important; gap: 2rem !important; width: 100% !important; }
+      .hero-visual { display: none !important; }
+      .hero-badge { font-size: .65rem !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; max-width: 100% !important; }
+      h1 { font-size: 1.9rem !important; line-height: 1.2 !important; }
       /* Hero: texto no se corta */
       .hero-sub { max-width: 100% !important; font-size: .9rem !important; }
-      h1 { font-size: 2rem !important; }
       .hero-btns { flex-direction: column !important; }
       .btn-primary, .btn-secondary, .btn-orange { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
       /* Tarjetas de servicios: 1 columna */
@@ -1138,6 +1143,20 @@ window.addEventListener('load', function() {
     <div class="benefit-item"><i class="fas fa-award"></i><span>Certificaciones ISO internacionales</span></div>
     <span class="benefit-sep">✦</span>
   </div>
+  <div class="benefits-track" aria-hidden="true">
+    <div class="benefit-item"><i class="fas fa-check-circle"></i><span>Cumplimiento legal garantizado</span></div>
+    <span class="benefit-sep">✦</span>
+    <div class="benefit-item"><i class="fas fa-shield-halved"></i><span>Reducción de riesgos laborales</span></div>
+    <span class="benefit-sep">✦</span>
+    <div class="benefit-item"><i class="fas fa-laptop"></i><span>Software propio SG-SST</span></div>
+    <span class="benefit-sep">✦</span>
+    <div class="benefit-item"><i class="fas fa-users"></i><span>Equipo de expertos certificados</span></div>
+    <span class="benefit-sep">✦</span>
+    <div class="benefit-item"><i class="fas fa-leaf"></i><span>Gestión ambiental integral</span></div>
+    <span class="benefit-sep">✦</span>
+    <div class="benefit-item"><i class="fas fa-award"></i><span>Certificaciones ISO internacionales</span></div>
+    <span class="benefit-sep">✦</span>
+  </div>
 </div>
 <!-- SERVICIOS -->
 <section id="servicios" class="section" style="background:#ffffff; padding-bottom: 4rem; position:relative;">
@@ -1146,7 +1165,7 @@ window.addEventListener('load', function() {
     <h2 class="section-title" style="color:var(--navy);">Servicios <span>Profesionales</span> SSTA</h2>
     <p class="section-sub" style="color:#4a5568; margin:1rem auto; text-align:center;">Soluciones integrales en Seguridad y Salud en el Trabajo, Gestión Ambiental y Seguridad Vial para empresas de todos los sectores en Colombia.</p>
   </div>
-  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-bottom:2.5rem;">
+  <div class="services-grid" style="margin-bottom:2.5rem;">
     <div class="srv-card" onclick="openModal('modal1')">
       <span class="srv-icon">🛡️</span>
       <h3>Gestión y Consultoría SG-SST</h3>
