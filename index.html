@@ -22,7 +22,7 @@
       --light:   #e8f4ff;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Nunito', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+    html { overflow-x: hidden; max-width: 100%; } body { font-family: 'Nunito', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; max-width: 100%; }
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--navy3); }
     ::-webkit-scrollbar-thumb { background: var(--green3); border-radius: 3px; }
@@ -738,11 +738,16 @@
       .hero-visual { display: none; }
       .benefits-grid { grid-template-columns: 1fr 1fr; }
       .func-grid { grid-template-columns: repeat(2, 1fr); }
+      .sw-func-grid { grid-template-columns: repeat(2, 1fr) !important; }
     }
     @media (max-width: 640px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .benefits-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr !important; }
+      .benefits-grid { grid-template-columns: 1fr 1fr !important; }
+      .benefits-grid .benefit-card { padding: 1.2rem 1rem !important; }
       .func-grid { grid-template-columns: 1fr 1fr; }
+      .sw-func-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .sw-func-card { padding: .9rem .7rem !important; }
+      .sw-func-card p { font-size: .72rem !important; }
       .vial-pillars { grid-template-columns: 1fr; }
       .about-numbers { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: rgba(9,21,37,.98); padding: 2rem; gap: 1.2rem; border-bottom: 1px solid rgba(92,184,0,.15); }
@@ -750,6 +755,29 @@
       .hamburger { display: flex; }
       .cta-banner { margin: 0 5% 4rem; padding: 2.5rem 1.5rem; }
       .footer-top { flex-direction: column; gap: 2rem; }
+      html, body { overflow-x: hidden !important; }
+      .blob-1 { width: 200px !important; height: 200px !important; right: -60px !important; }
+      .blob-2 { width: 150px !important; height: 150px !important; }
+      .blob-3 { width: 120px !important; height: 120px !important; }
+      .hero { padding: 100px 5% 3rem !important; }
+      .hero-title { font-size: 2rem !important; line-height: 1.2 !important; }
+      .hero-svc-grid { grid-template-columns: 1fr !important; }
+      .contact-form { padding: 1.5rem !important; }
+      .section-title { font-size: 1.6rem !important; }
+      .hero-desc { font-size: 0.95rem !important; }
+      .btn-primary, .btn-outline { font-size: 0.9rem !important; padding: 0.8rem 1.4rem !important; }
+      /* Evitar overflow horizontal */
+      html, body { overflow-x: hidden !important; max-width: 100% !important; }
+      * { max-width: 100%; box-sizing: border-box !important; }
+      /* Tarjetas de servicios: texto sin corte */
+      .srv-card h3 { font-size: .9rem !important; white-space: normal !important; word-break: break-word; }
+      .srv-card { padding: 1.2rem 1rem !important; min-width: 0 !important; }
+      /* Benefit cards en 2 col */
+      .benefit-card h4 { font-size: .9rem !important; }
+      .benefit-card p { font-size: .78rem !important; }
+      /* Sección software / módulos */
+      .sw-row { grid-template-columns: 1fr !important; }
+      .software-inner { gap: 2rem !important; }
     }
     .hero-svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .hero-svc-card {
@@ -1500,16 +1528,16 @@ window.addEventListener('load', function() {
         <h3>Solicita tu asesoría gratis 🚀</h3>
         <p>Completa el formulario y te respondemos en menos de 24 horas.</p>
       </div>
-      <div class="contact-form">
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xpqknzzr" method="POST">
         <div class="form-row">
-          <div class="fg"><label>Nombre</label><input type="text" placeholder="Tu nombre"/></div>
-          <div class="fg"><label>Empresa</label><input type="text" placeholder="Nombre de la empresa"/></div>
+          <div class="fg"><label>Nombre</label><input type="text" name="nombre" placeholder="Tu nombre" required/></div>
+          <div class="fg"><label>Empresa</label><input type="text" name="empresa" placeholder="Nombre de la empresa" required/></div>
         </div>
-        <div class="fg"><label>Correo electrónico</label><input type="email" placeholder="correo@empresa.com"/></div>
-        <div class="fg"><label>Teléfono / WhatsApp</label><input type="tel" placeholder="+57 300 000 0000"/></div>
+        <div class="fg"><label>Correo electrónico</label><input type="email" name="email" placeholder="correo@empresa.com" required/></div>
+        <div class="fg"><label>Teléfono / WhatsApp</label><input type="tel" name="telefono" placeholder="+57 300 000 0000"/></div>
         <div class="fg">
           <label>Servicio de interés</label>
-          <select>
+          <select name="servicio">
             <option value="">Selecciona un servicio</option>
             <option>SG-SST (Sistema de Gestión)</option>
             <option>Software SG-SST Ingeasy</option>
@@ -1520,11 +1548,16 @@ window.addEventListener('load', function() {
             <option>Batería de Riesgo Psicosocial</option>
           </select>
         </div>
-        <div class="fg"><label>Mensaje</label><textarea placeholder="Cuéntanos sobre tu empresa y necesidades..."></textarea></div>
-        <a href="https://wa.me/573206853944" target="_blank" class="form-submit-btn">
+        <div class="fg"><label>Mensaje</label><textarea name="mensaje" placeholder="Cuéntanos sobre tu empresa y necesidades..."></textarea></div>
+        <input type="hidden" name="_next" value="https://ingeasy.netlify.app/#contacto"/>
+        <input type="hidden" name="_subject" value="Nueva solicitud de asesoría - Ingeasy"/>
+        <button type="submit" class="form-submit-btn">
           <i class="fas fa-paper-plane"></i> Enviar mensaje
-        </a>
-      </div>
+        </button>
+        <div id="form-ok" style="display:none;background:#1a8a4a;color:#fff;padding:12px 16px;border-radius:8px;text-align:center;font-weight:500;margin-top:8px">
+          ✔ ¡Mensaje enviado! Te contactamos en menos de 24 horas.
+        </div>
+      </form>
     </div>
   </div>
 </section>
