@@ -114,7 +114,7 @@
       color: var(--gray); max-width: 500px;
       animation: fadeUp .8s .2s ease both;
     }
-    .hero-btns { display: flex; gap: 1rem; margin-top: 4.5rem; flex-wrap: wrap; animation: fadeUp .8s .3s ease both; }
+    .hero-btns { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp .8s .3s ease both; }
     .btn-primary {
       padding: .9rem 2.2rem; background: var(--green); color: var(--navy);
       font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: .95rem;
@@ -769,6 +769,11 @@
       /* Evitar overflow horizontal */
       html, body { overflow-x: hidden !important; max-width: 100% !important; }
       * { max-width: 100%; box-sizing: border-box !important; }
+      /* Hero: texto no se corta */
+      .hero-sub { max-width: 100% !important; font-size: .9rem !important; }
+      h1 { font-size: 2rem !important; }
+      .hero-btns { flex-direction: column !important; }
+      .btn-primary, .btn-secondary, .btn-orange { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
       /* Tarjetas de servicios: 1 columna */
       .services-grid { grid-template-columns: 1fr !important; }
       .srv-card h3 { font-size: .95rem !important; white-space: normal !important; word-break: break-word; }
@@ -776,9 +781,9 @@
       /* Benefit cards en 2 col */
       .benefit-card h4 { font-size: .9rem !important; }
       .benefit-card p { font-size: .78rem !important; }
-      /* Sección software / módulos */
+      /* Software: una columna */
+      .software-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
       .sw-row { grid-template-columns: 1fr !important; }
-      .software-inner { gap: 2rem !important; }
       /* Formulario: una columna */
       .form-row { grid-template-columns: 1fr !important; }
       /* Stats de CTA: wrap */
@@ -789,6 +794,10 @@
       .contact-subtitle { font-size: .88rem !important; }
       /* Botón WhatsApp ancho completo */
       .btn-wa-chat { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
+      /* Sección software texto */
+      .software-inner h3 { font-size: 1.8rem !important; }
+      /* Overflow global */
+      section, .section { overflow-x: hidden !important; }
     }
     .hero-svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .hero-svc-card {
@@ -1351,7 +1360,7 @@ window.addEventListener('load', function() {
 </section>
 <!-- SOFTWARE -->
 <section id="software" class="section" style="background:#ffffff;">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+  <div class="software-inner" style="gap:5rem;align-items:start;">
     <div>
       <div class="section-label">Tecnología propia</div>
       <h2 class="section-title" style="color:#0a1628;">Software <span>SG-SST</span><br>todo en uno</h2>
