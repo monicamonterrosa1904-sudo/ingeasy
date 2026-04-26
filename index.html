@@ -769,8 +769,9 @@
       /* Evitar overflow horizontal */
       html, body { overflow-x: hidden !important; max-width: 100% !important; }
       * { max-width: 100%; box-sizing: border-box !important; }
-      /* Tarjetas de servicios: texto sin corte */
-      .srv-card h3 { font-size: .9rem !important; white-space: normal !important; word-break: break-word; }
+      /* Tarjetas de servicios: 1 columna */
+      .services-grid { grid-template-columns: 1fr !important; }
+      .srv-card h3 { font-size: .95rem !important; white-space: normal !important; word-break: break-word; }
       .srv-card { padding: 1.2rem 1rem !important; min-width: 0 !important; }
       /* Benefit cards en 2 col */
       .benefit-card h4 { font-size: .9rem !important; }
@@ -778,6 +779,16 @@
       /* Sección software / módulos */
       .sw-row { grid-template-columns: 1fr !important; }
       .software-inner { gap: 2rem !important; }
+      /* Formulario: una columna */
+      .form-row { grid-template-columns: 1fr !important; }
+      /* Stats de CTA: wrap */
+      .cta-banner-stats { flex-wrap: wrap !important; gap: 1.5rem !important; justify-content: space-around !important; }
+      /* Contacto: evitar overflow */
+      .cc-val { font-size: .82rem !important; word-break: break-word !important; }
+      .cc-item { padding: .8rem !important; }
+      .contact-subtitle { font-size: .88rem !important; }
+      /* Botón WhatsApp ancho completo */
+      .btn-wa-chat { width: 100% !important; justify-content: center !important; box-sizing: border-box !important; }
     }
     .hero-svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .hero-svc-card {
